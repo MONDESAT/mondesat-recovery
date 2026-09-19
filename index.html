@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MONDESAT - Recuperación de contraseña</title>
+
+  <style>
+    :root {
+      --brand: #176b62;
+      --brand2: #10a9b7;
+      --bg: #f3f7f7;
+      --text: #17363c;
+      --muted: #6b7f84;
+      --line: #d8e4e5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(16,169,183,.12), transparent 32%),
+        linear-gradient(135deg, #f8fbfb, var(--bg));
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .card {
+      width: min(520px, 100%);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 34px;
+      text-align: center;
+      box-shadow: 0 18px 55px rgba(23,107,98,.12);
+    }
+
+    .logo {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 18px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: #fff;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .ok {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 26px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(23,107,98,.18);
+    }
+
+    .button:hover {
+      background: #115d56;
+    }
+
+    .small {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #8a9b9f;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="logo">MS</div>
+
+    <h1>MONDESAT</h1>
+
+    <div class="ok">MONDESAT se ha abierto correctamente.</div>
+
+    <p>
+      Puedes cerrar esta ventana y continuar en la aplicación.
+    </p>
+
+    <a id="openApp" class="button" href="#">
+      Abrir MONDESAT
+    </a>
+
+    <p class="small">
+      Si la aplicación no se abre automáticamente, pulsa el botón.
+    </p>
+  </main>
+
+  <script>
+    const hash = location.hash || '';
+    const search = location.search || '';
+
+    const appUrl = 'mondesat://reset-password' + search + hash;
+
+    document.getElementById('openApp').href = appUrl;
+
+    setTimeout(() => {
+      location.href = appUrl;
+    }, 500);
+  </script>
+</body>
+</html>
