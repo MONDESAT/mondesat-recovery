@@ -127,16 +127,24 @@
   </main>
 
   <script>
-    const hash = location.hash || '';
-    const search = location.search || '';
+  const hash = window.location.hash || '';
+  const search = window.location.search || '';
 
-    const appUrl = 'mondesat://reset-password' + search + hash;
+  const appUrl = 'mondesat://reset-password' + search + hash;
+  const openButton = document.getElementById('openApp');
+  const status = document.querySelector('.ok');
 
-    document.getElementById('openApp').href = appUrl;
+  openButton.href = appUrl;
 
-    setTimeout(() => {
-      location.href = appUrl;
-    }, 500);
-  </script>
+  status.textContent = 'Abriendo MONDESAT…';
+
+  setTimeout(() => {
+    window.location.href = appUrl;
+  }, 400);
+
+  setTimeout(() => {
+    status.textContent = 'MONDESAT se ha abierto correctamente.';
+  }, 1200);
+</script>
 </body>
 </html>
